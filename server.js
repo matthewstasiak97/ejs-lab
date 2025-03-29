@@ -57,15 +57,29 @@ const RESTAURANT = {
     },
   ],
 };
-
+app.set("view engine", "ejs");
 app.get("/", (req, res) => {
-  res.locals.resturant = RESTAURANT;
+  res.locals.restaurant = RESTAURANT;
   res.render("home.ejs");
 });
 
 app.get("/menu", (req, res) => {
   res.locals.menu = RESTAURANT.menu;
   res.render("menu.ejs");
+});
+
+app.get("/menu/:category", (req, res) => {
+  const categoryParam = req.params.category.toLowerCase();
+
+  const menuItems = RESTAURANT.menu.filter(
+    (item) => item.category.toLowerCase() === categoryParam
+  );
+  const categoryName =
+    categoryParam.charAt(0).toUpperCase() + categoryParam.slice(1);
+
+  res.locals.menuItems = menuItems;
+  res.locals.category = categoryName;
+  res.render("category");
 });
 
 app.listen(3000, () => {

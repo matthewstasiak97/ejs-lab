@@ -6,11 +6,11 @@
     <title>The Green Byte Bistro</title>
   </head>
   <body>
-    <%- include('./partials/nav') %>
-    <h1><%= resturant.name%></h1>
-    <p><%= resturant.address %></p>
-    <p><%= resturant.phone %></p>
-    <% if (resturant.isOpen) { %>
+    <%- include('partials/nav') %>
+    <h1><%= restaurant.name%></h1>
+    <p><%= restaurant.address %></p>
+    <p><%= restaurant.phone %></p>
+    <% if (restaurant.isOpen) { %>
     <p>Yes, we are open!</p>
     <% } else { %>
     <p>Sorry, we are closed.</p>
